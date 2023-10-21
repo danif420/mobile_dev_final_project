@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">ar_final_project</string>
+    <string name="about">About</string>
+    <string name="settings">Settings</string>
+    <string name="login">Log in</string>
+    <string name="home">Home</string>
+    <string name="exit">Exit</string>
+    <string name="item1">Item 1</string>
+    <string name="item1p" translatable="false">$ 30.000</string>
+    <string name="item2">Item 2</string>
+    <string name="item2p" translatable="false">$ 15.300</string>
+    <string name="item3">Item 3</string>
+    <string name="item3p" translatable="false">$ 12.000</string>
+    <string name="about1">Made by</string>
+    <string name="about2" translatable="false">Luis Bastidas - cod: 219034039</string>
+    <string name="about3" translatable="false">Daniel Fino - cod: 219034167</string>
+    <string name="about4">Mobile development</string>
+    <string name="loginb">Log In</string>
+    <string name="forgot">Forgot my password</string>
+    <string name="name">Name</string>
+    <string name="password">Password</string>
+    <string name="signup">Create account</string>
+
 </resources>

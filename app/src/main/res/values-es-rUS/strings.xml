@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ar_proyecto_final</string>
+    <string name="about">Acerca de</string>
+    <string name="settings">Configuración</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="home">Inicio</string>
+    <string name="exit">Salir</string>
+    <string name="item1">Objeto 1</string>
+    <string name="item2">Objeto 2</string>
+    <string name="item3">Objeto 3</string>
+    <string name="about1">Hecho por</string>
+    <string name="about4">Desarrollo móvil</string>
+    <string name="signup">Crear cuenta</string>
+    <string name="password">Contraseña</string>
+    <string name="name">Nombre</string>
+    <string name="forgot">Olvidé mi contraseña</string>
+    <string name="loginb">Iniciar</string>
+</resources>
