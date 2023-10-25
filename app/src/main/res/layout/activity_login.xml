@@ -71,6 +71,7 @@
             android:textColor="@color/light_green"
             android:textStyle="bold"/>
         <EditText
+            android:id="@+id/username"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
@@ -82,12 +83,15 @@
             android:textColor="@color/light_green"
             android:textStyle="bold"/>
         <EditText
+            android:id="@+id/userpass"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:backgroundTint="@color/green"
-            android:layout_marginBottom="32dp"/>
+            android:layout_marginBottom="32dp"
+            android:inputType="textPassword"/>
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/blogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/loginb"
