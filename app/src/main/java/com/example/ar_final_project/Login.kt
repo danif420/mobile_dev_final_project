@@ -33,7 +33,7 @@ class Login : AppCompatActivity() {
                 auth.signInWithEmailAndPassword(name, pass)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
-                            val text = "Bienvenido profe Franklin!"
+                            val text = "Bienvenido!"
                             val duration = Toast.LENGTH_SHORT
                             val toast = Toast.makeText(this, text, duration)
                             toast.show()

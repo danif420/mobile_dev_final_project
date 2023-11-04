@@ -20,11 +20,12 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/home"
-            android:textColor="@color/gray"
+            android:textColor="@color/green"
             android:textStyle="bold"
             android:textSize="14dp"
+            android:background="@color/gray"
             android:textAlignment="center"
-            android:background="@color/light_green"/>
+            />
         <!-- Log In -->
         <TextView
             android:id="@+id/login"
@@ -167,4 +168,8 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>
