@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
@@ -21,100 +22,58 @@ class MainActivity : AppCompatActivity() {
         val about=findViewById<TextView>(R.id.about)
 
         val db = Firebase.firestore
-        val products=listOf(
-            hashMapOf(
-                "id" to "001",
-                "name" to "small cake",
-                "price" to "$ 20.000"
-            ),
-            hashMapOf(
-                "id" to "002",
-                "name" to "medium cake",
-                "price" to "$ 32.000"
-            ),
-            hashMapOf(
-                "id" to "003",
-                "name" to "coffee",
-                "price" to "$ 2.000"
-            ),
-            hashMapOf(
-                "id" to "004",
-                "name" to "hamburger",
-                "price" to "$ 18.000"
-            )
-        )
-        for (x in products) {
-            db.collection("products")
-                .add(x)
-                .addOnSuccessListener { documentReference ->
-                    Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
-                }
-                .addOnFailureListener { e ->
-                    Log.w(TAG, "Error adding document", e)
-                }
-
-            login.setOnClickListener {
-                val intent= Intent(this,Login::class.java)
-                startActivity(intent)
-            }
-            about.setOnClickListener {
-                val intent= Intent(this,About::class.java)
-                startActivity(intent)
-            }
-
-        }
 
         db.collection("products")
             .get()
             .addOnSuccessListener { result ->
                 val products = result.map { document ->
-                    Product(
-                        document.id.toInt(),
-                        document.getString("name")!!,
-                        document.getLong("price")!!.toInt()
-                    )
+                        Product(
+                            document.getString("id") ?: "null",
+                            document.getString("name") ?: "null",
+                            document.getString("price") ?: "null"
+                        )
+
                 }
+                val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
+                val adapter = ProductAdapter(products) // Pass the products list to the adapter
+                recyclerView.adapter = adapter
+                recyclerView.layoutManager = LinearLayoutManager(this)
             }
             .addOnFailureListener { exception ->
                 Log.w(TAG, "Error getting documents.", exception)
             }
+
+
     }
 
 }
 
 data class Product(
-    val id: Int,
+    val id: String,
     val name: String,
-    val price: Int
+    val price: String
 )
 
-class ProductAdapter(private val products: List<Product>) :
+class ProductAdapter(private val productList: List<Product>) :
     RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
-    class
-    ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val nameTextView: TextView = itemView.findViewById(R.id.nameTextView)
 
-
-        val priceTextView: TextView = itemView.findViewById(R.id.priceTextView)
+    inner class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val productName: TextView = itemView.findViewById(R.id.productName)
+        val productPrice: TextView = itemView.findViewById(R.id.productPrice)
     }
 
-    override
-
-    fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int): ProductViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_product, parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.product, parent, false)
         return ProductViewHolder(view)
     }
-    override
-    fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        val product = products[position]
-        holder.nameTextView.text = product.name
-        holder.priceTextView.text = product.price.toString()
+
+    override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
+        val currentProduct = productList[position]
+        holder.productName.text = currentProduct.name
+        holder.productPrice.text = currentProduct.price
     }
+
     override fun getItemCount(): Int {
-        return products.size
+        return productList.size
     }
 }
-
