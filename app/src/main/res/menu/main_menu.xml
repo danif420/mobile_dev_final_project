@@ -2,21 +2,26 @@
     <item
         android:id="@+id/page_home"
         android:icon="@drawable/home_selector"
+        android:onClick="onOptionsItemSelected"
         android:title="@string/home" />
     <item
         android:id="@+id/page_search"
         android:icon="@drawable/search_selector"
+        android:onClick="onOptionsItemSelected"
         android:title="@string/search" />
     <item
         android:id="@+id/page_upload"
         android:icon="@drawable/upload_selector"
+        android:onClick="onOptionsItemSelected"
         android:title="@string/upload" />
     <item
         android:id="@+id/page_account"
         android:icon="@drawable/account_selector"
+        android:onClick="onOptionsItemSelected"
         android:title="@string/account" />
     <item
         android:id="@+id/page_about"
         android:icon="@drawable/about_selector"
+        android:onClick="onOptionsItemSelected"
         android:title="@string/about" />
 </menu>
