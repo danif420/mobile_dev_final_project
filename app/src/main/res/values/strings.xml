@@ -15,10 +15,13 @@
     <string name="about2" translatable="false">Luis Bastidas - cod: 219034039</string>
     <string name="about3" translatable="false">Daniel Fino - cod: 219034167</string>
     <string name="about4">Mobile development</string>
-    <string name="loginb">Log In</string>
+    <string name="loginb">Go</string>
     <string name="forgot">Forgot my password</string>
     <string name="name">Name</string>
     <string name="password">Password</string>
     <string name="signup">Create account</string>
+    <string name="search">Search</string>
+    <string name="upload">Upload</string>
+    <string name="account">Account</string>
 
 </resources>

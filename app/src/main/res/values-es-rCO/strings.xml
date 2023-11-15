@@ -16,4 +16,7 @@
     <string name="name">Nombre</string>
     <string name="forgot">Olvidé mi contraseña</string>
     <string name="loginb">Iniciar</string>
+    <string name="search">Buscar</string>
+    <string name="upload">Publicar</string>
+    <string name="account">Cuenta</string>
 </resources>

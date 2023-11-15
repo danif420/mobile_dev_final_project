@@ -20,8 +20,6 @@ class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        val home=findViewById<TextView>(R.id.home)
-        val about=findViewById<TextView>(R.id.about)
         val blogin=findViewById<AppCompatButton>(R.id.blogin)
         val uname=findViewById<EditText>(R.id.username)
         val upass=findViewById<EditText>(R.id.userpass)
@@ -33,10 +31,6 @@ class Login : AppCompatActivity() {
                 auth.signInWithEmailAndPassword(name, pass)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
-                            val text = "Bienvenido!"
-                            val duration = Toast.LENGTH_SHORT
-                            val toast = Toast.makeText(this, text, duration)
-                            toast.show()
                             val intent= Intent(this,MainActivity::class.java)
                             startActivity(intent)
                             val user: FirebaseUser? = auth.currentUser
@@ -48,14 +42,6 @@ class Login : AppCompatActivity() {
                         }
                     }
             }
-        }
-        home.setOnClickListener {
-            val intent= Intent(this,MainActivity::class.java)
-            startActivity(intent)
-        }
-        about.setOnClickListener {
-            val intent= Intent(this,About::class.java)
-            startActivity(intent)
         }
     }
 }

@@ -16,9 +16,6 @@
             android:name=".Login"
             android:exported="false" />
         <activity
-            android:name=".About"
-            android:exported="false" />
-        <activity
             android:name=".Abk"
             android:exported="false" />
         <activity
