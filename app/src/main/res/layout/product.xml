@@ -3,18 +3,25 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_marginLeft="10sp">
+    android:layout_margin="5sp">
     <TextView
         android:id="@+id/productName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:paddingTop="5sp"
+        android:paddingLeft="5sp"
+        android:paddingRight="5sp"
+        android:paddingBottom="0sp"
         android:text="Product Name" />
     <TextView
         android:id="@+id/productPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        android:text="Product Price"
-        android:layout_marginBottom="10sp"/>
+        android:textSize="16sp"
+        android:padding="5sp"
+        android:text="Product Price"/>
 </LinearLayout>

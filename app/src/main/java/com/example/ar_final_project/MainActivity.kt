@@ -1,5 +1,6 @@
 package com.example.ar_final_project
 
+import Home
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -25,6 +26,18 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.page_home -> {
                 replaceFragment(Home())
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.page_search -> {
+                replaceFragment(Search())
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.page_upload -> {
+                replaceFragment(Upload())
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.page_account -> {
+                replaceFragment(Account())
                 return@OnNavigationItemSelectedListener true
             }
             R.id.page_about -> {

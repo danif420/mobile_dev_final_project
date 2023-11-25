@@ -1,5 +1,3 @@
-package com.example.ar_final_project
-
 import android.content.ContentValues
 import android.os.Bundle
 import android.util.Log
@@ -8,8 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ar_final_project.R
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
 
@@ -62,17 +61,17 @@ class Home : Fragment() {
     private fun updateRecyclerView() {
         val adapter = ProductAdapter(products)
         recyclerView.adapter = adapter
-    }
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        // Change the layout manager to GridLayoutManager
+        val layoutManager = GridLayoutManager(requireContext(), 2) // 2 items per row
+        recyclerView.layoutManager = layoutManager
     }
 
     data class Product(
-    val id: String,
-    val name: String,
-    val price: String
-)
+        val id: String,
+        val name: String,
+        val price: String
+    )
 }
 
 class ProductAdapter(private val productList: List<Home.Product>) :
@@ -99,3 +98,4 @@ class ProductAdapter(private val productList: List<Home.Product>) :
         return productList.size
     }
 }
+
