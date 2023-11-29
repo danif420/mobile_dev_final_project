@@ -4,6 +4,11 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_margin="5sp">
+    <ImageView
+        android:id="@+id/productImage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"/>
     <TextView
         android:id="@+id/productName"
         android:layout_width="wrap_content"

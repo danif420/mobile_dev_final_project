@@ -45,6 +45,7 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore:24.9.1")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.picasso:picasso:2.71828")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
