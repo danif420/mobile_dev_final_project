@@ -13,6 +13,7 @@
     <string name="about4">Desarrollo móvil</string>
     <string name="signup">Crear cuenta</string>
     <string name="password">Contraseña</string>
+    <string name="confirmpassword">Repetir contraseña</string>
     <string name="name">Nombre</string>
     <string name="forgot">Olvidé mi contraseña</string>
     <string name="loginb">Iniciar</string>

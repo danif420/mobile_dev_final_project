@@ -21,6 +21,7 @@ class Login : AppCompatActivity() {
         setContentView(R.layout.activity_login)
         val blogin=findViewById<AppCompatButton>(R.id.blogin)
         val uname=findViewById<EditText>(R.id.username)
+        val caccount=findViewById<TextView>(R.id.create_account)
         val upass=findViewById<EditText>(R.id.userpass)
         blogin.setOnClickListener {
             var name = uname.text.toString()
@@ -56,6 +57,10 @@ class Login : AppCompatActivity() {
                     }
                 }
             }
+        }
+        caccount.setOnClickListener {
+            val intent = Intent(this@Login, CreateUser::class.java)
+            startActivity(intent)
         }
     }
 }
