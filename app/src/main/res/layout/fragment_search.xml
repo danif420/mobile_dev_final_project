@@ -16,7 +16,7 @@
             android:id="@+id/searchView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:queryHint="Enter product"
+            android:queryHint=""
             android:iconifiedByDefault="false"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="30dp"
@@ -25,12 +25,12 @@
             android:queryBackground="@android:color/transparent"
             />
 
-        <ListView
-            android:id="@+id/productList"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp" />
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            tools:listitem="@layout/product"/>
     </LinearLayout>
 
 </FrameLayout>

@@ -1,16 +1,11 @@
 package com.example.ar_final_project
 
-import Home
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
-import android.view.inputmethod.InputBinding
-import android.widget.ArrayAdapter
-import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import com.example.ar_final_project.databinding.ActivityMainBinding
-import com.example.ar_final_project.model.Product
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
