@@ -13,13 +13,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import com.example.ar_final_project.MainActivity
 import com.example.ar_final_project.ProductRetrofitService
 import com.example.ar_final_project.R
-import com.example.ar_final_project.RetrofitService
 import com.example.ar_final_project.model.Product
-import com.google.firebase.Firebase
-import com.google.firebase.firestore.firestore
 import kotlinx.coroutines.launch
 
 class Home : Fragment() {

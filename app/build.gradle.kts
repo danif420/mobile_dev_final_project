@@ -8,6 +8,7 @@ android {
     namespace = "com.example.ar_final_project"
     compileSdk = 33
 
+
     defaultConfig {
         applicationId = "com.example.ar_final_project"
         minSdk = 23
@@ -16,7 +17,11 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+
     }
+
+
 
     buildTypes {
         release {
@@ -27,6 +32,12 @@ android {
             )
         }
     }
+
+
+    buildFeatures {
+        viewBinding = true
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
