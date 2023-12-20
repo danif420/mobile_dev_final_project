@@ -29,6 +29,8 @@ interface RetrofitService {
 
 interface ProductRetrofitService {
     @GET("api/products/")
+    suspend fun searchItems(@Query("search") query: String): RemoteResult
+    @GET("api/products/")
     suspend fun products(): RemoteResult
     object ProductRetrofitServiceFactory {
         fun makeRetrofitService(): ProductRetrofitService {
@@ -39,5 +41,4 @@ interface ProductRetrofitService {
                 .create(ProductRetrofitService::class.java)
         }
     }
-    suspend fun searchItems(@Query("search") query: String): RemoteResult
 }

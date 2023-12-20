@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.SearchView
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ar_final_project.databinding.FragmentSearchBinding
@@ -32,11 +33,14 @@ class Search : Fragment() {
         // Set up your RecyclerView adapter and layout manager
         productAdapter = ProductAdapter(productList)
         recyclerView.adapter = productAdapter
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
+                if (!query.isNullOrBlank()) {
+                    searchItems(query)
+                }
+                return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
@@ -46,7 +50,6 @@ class Search : Fragment() {
                 return true
             }
         })
-
         return view
     }
 
