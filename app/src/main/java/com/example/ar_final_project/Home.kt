@@ -1,5 +1,5 @@
-import android.content.ContentValues
-import android.content.Intent
+package com.example.ar_final_project
+
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -13,8 +13,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import com.example.ar_final_project.ProductRetrofitService
-import com.example.ar_final_project.R
 import com.example.ar_final_project.model.Product
 import kotlinx.coroutines.launch
 
@@ -32,7 +30,7 @@ class Home : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.d("Home", "onCreateView")
+        Log.d("com.example.ar_final_project.Home", "onCreateView")
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
         recyclerView = view.findViewById(R.id.recyclerView) as RecyclerView

@@ -7,6 +7,7 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 data class ApiResponse(val str: String)
 
@@ -27,6 +28,8 @@ interface RetrofitService {
 }
 
 interface ProductRetrofitService {
+    @GET("api/products/")
+    suspend fun searchItems(@Query("search") query: String): RemoteResult
     @GET("api/products/")
     suspend fun products(): RemoteResult
     object ProductRetrofitServiceFactory {
