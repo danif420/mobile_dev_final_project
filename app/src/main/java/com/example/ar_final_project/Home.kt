@@ -62,7 +62,12 @@ class Home : Fragment() {
     }
 
     private fun updateRecyclerView(products: List<Product>) {
-        val adapter = ProductAdapter(products)
+        val adapter = ProductAdapter(products) { selectedProduct ->
+            // Handle the item click here
+            // You can launch your AR fragment or perform any other action
+            Toast.makeText(requireContext(), "Clicked on ${selectedProduct.id}", Toast.LENGTH_SHORT).show()
+        }
+
         recyclerView.adapter = adapter
 
         // Change the layout manager to GridLayoutManager
@@ -71,13 +76,22 @@ class Home : Fragment() {
     }
 }
 
-class ProductAdapter(private val productList: List<Product>) :
+class ProductAdapter(private val productList: List<Product>, private var onItemClick: (Product) -> Unit) :
     RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
     inner class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val productName: TextView = itemView.findViewById(R.id.productName)
         val productPrice: TextView = itemView.findViewById(R.id.productPrice)
         val productImage: ImageView = itemView.findViewById(R.id.productImage)
+        // click listener
+        init {
+            itemView.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    onItemClick(productList[position])
+                }
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
@@ -88,6 +102,7 @@ class ProductAdapter(private val productList: List<Product>) :
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val currentProduct = productList[position]
+        holder.productName.id = currentProduct.id
         holder.productName.text = currentProduct.name
         holder.productPrice.text = currentProduct.price
         Picasso.get()
@@ -97,5 +112,9 @@ class ProductAdapter(private val productList: List<Product>) :
 
     override fun getItemCount(): Int {
         return productList.size
+    }
+    // set the click listener from the fragment
+    fun setOnItemClickListener(listener: (Product) -> Unit) {
+        onItemClick = listener
     }
 }

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,7 +32,11 @@ class Search : Fragment() {
         recyclerView = view.findViewById(R.id.recyclerView)
 
         // Set up your RecyclerView adapter and layout manager
-        productAdapter = ProductAdapter(productList)
+        productAdapter = ProductAdapter(productList) { selectedProduct ->
+            // Handle the item click here in the search method
+            Toast.makeText(requireContext(), "Clicked on ${selectedProduct.id}", Toast.LENGTH_SHORT).show()
+            // You can also launch your AR fragment or perform any other action
+        }
         recyclerView.adapter = productAdapter
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
 
