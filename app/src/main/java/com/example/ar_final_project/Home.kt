@@ -1,19 +1,20 @@
 package com.example.ar_final_project
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
 import com.example.ar_final_project.model.Product
+import com.squareup.picasso.Picasso
 import kotlinx.coroutines.launch
 
 class Home : Fragment() {
@@ -66,6 +67,8 @@ class Home : Fragment() {
             // Handle the item click here
             // You can launch your AR fragment or perform any other action
             Toast.makeText(requireContext(), "Clicked on ${selectedProduct.id}", Toast.LENGTH_SHORT).show()
+            val intent = Intent(activity, AR::class.java)
+            startActivity(intent)
         }
 
         recyclerView.adapter = adapter
