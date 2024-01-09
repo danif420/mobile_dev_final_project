@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.google.ar.core.ArCoreApk
 import com.google.ar.core.HitResult
 import com.google.ar.sceneform.AnchorNode
@@ -12,18 +13,17 @@ import com.google.ar.sceneform.assets.RenderableSource
 import com.google.ar.sceneform.math.Vector3
 import com.google.ar.sceneform.rendering.ModelRenderable
 import com.google.ar.sceneform.ux.ArFragment
+import kotlinx.coroutines.launch
 
 class AR : AppCompatActivity() {
-
-    private val GLTF_ASSET = "file:///android_asset/cake.glb" // Replace with the actual path
     private var yourRenderable: ModelRenderable? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ar)
-
         if (checkARCoreAvailability()) {
-            loadAndRenderModel()
+            lifecycleScope.launch {
+                loadAndRenderModel(downloadModel(intent.getIntExtra("productId", -1)))
+            }
         } else {
             // ARCore is not available on this device, handle accordingly
             // You can display a message or fallback to a non-AR experience
@@ -35,20 +35,24 @@ class AR : AppCompatActivity() {
         val availability = ArCoreApk.getInstance().checkAvailability(this)
         return availability == ArCoreApk.Availability.SUPPORTED_INSTALLED
     }
-
-    private fun loadAndRenderModel() {
+    private suspend fun downloadModel(productId: Int): String {
+        val retrofitService = ModelRetrofitService.ModelRetrofitServiceFactory.makeRetrofitService()
+        val response = retrofitService.downloadModel(productId.toString())
+        return response.modeluri
+    }
+    private fun loadAndRenderModel(modelUri: String) {
         ModelRenderable.builder()
             .setSource(
                 this, RenderableSource.builder().setSource(
                     this,
-                    Uri.parse(GLTF_ASSET),
+                    Uri.parse(modelUri),
                     RenderableSource.SourceType.GLB
                 )
-                    .setScale(0.5f)
+                    .setScale(1.0f)
                     .setRecenterMode(RenderableSource.RecenterMode.ROOT)
                     .build()
             )
-            .setRegistryId(GLTF_ASSET)
+            .setRegistryId(modelUri)
             .build()
             .thenAccept {
                 loadModel(it)

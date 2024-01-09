@@ -7,10 +7,11 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 data class ApiResponse(val str: String)
-
+data class UriFromApi(val modeluri: String)
 interface RetrofitService {
     @FormUrlEncoded
     @POST("login/")
@@ -39,6 +40,19 @@ interface ProductRetrofitService {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(ProductRetrofitService::class.java)
+        }
+    }
+}
+interface ModelRetrofitService {
+    @GET("api/get_3d_model/{productId}/")
+    suspend fun downloadModel(@Path("productId") productId: String): UriFromApi
+    object ModelRetrofitServiceFactory {
+        fun makeRetrofitService(): ModelRetrofitService {
+            return Retrofit.Builder()
+                .baseUrl("http://10.0.2.2:8000/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create(ModelRetrofitService::class.java)
         }
     }
 }
