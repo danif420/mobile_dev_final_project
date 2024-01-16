@@ -42,3 +42,22 @@ interface ProductRetrofitService {
         }
     }
 }
+
+interface AccountRetrofitService {
+    @FormUrlEncoded
+    @POST("register/")  // Reemplaza con la ruta correcta de tu endpoint de registro
+    suspend fun register(
+        @Field("username") username: String,
+        @Field("password") password: String
+
+    ): ApiResponse
+    object AccountRetrofitServiceFactory {
+        fun makeRetrofitService(): AccountRetrofitService {
+            return Retrofit.Builder()
+                .baseUrl("http://10.0.2.2:8000/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create(AccountRetrofitService::class.java)
+        }
+    }
+}

@@ -28,7 +28,7 @@
             android:textColor="@color/white"
             android:textStyle="bold"/>
         <EditText
-            android:id="@+id/username"
+            android:id="@+id/usernameac"
             android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
@@ -41,7 +41,7 @@
             android:textColor="@color/white"
             android:textStyle="bold"/>
         <EditText
-            android:id="@+id/userpass"
+            android:id="@+id/userpassac"
             android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
@@ -55,7 +55,7 @@
             android:textColor="@color/white"
             android:textStyle="bold"/>
         <EditText
-            android:id="@+id/confirmuserpass"
+            android:id="@+id/confirmuserpassac"
             android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
@@ -63,7 +63,7 @@
             android:layout_marginBottom="64dp"
             android:inputType="textPassword"/>
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/blogin"
+            android:id="@+id/bgo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/loginb"
