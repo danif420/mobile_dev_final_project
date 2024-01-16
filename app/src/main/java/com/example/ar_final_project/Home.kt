@@ -48,7 +48,7 @@ class Home : Fragment() {
             try {
                 // Make the API call
                 val response = productService.products()
-
+                println("we cool")
                 // Check if the response is successful and not empty
                 val productsFromServer = response.products
                 updateRecyclerView(productsFromServer)
@@ -66,8 +66,8 @@ class Home : Fragment() {
         val adapter = ProductAdapter(products) { selectedProduct ->
             // Handle the item click here
             // You can launch your AR fragment or perform any other action
-            Toast.makeText(requireContext(), "Clicked on ${selectedProduct.id}", Toast.LENGTH_SHORT).show()
-            val intent = Intent(activity, AR::class.java)
+            val intent = Intent(activity, ProductDetail::class.java)
+            intent.putExtra("product",selectedProduct.id)
             startActivity(intent)
         }
 

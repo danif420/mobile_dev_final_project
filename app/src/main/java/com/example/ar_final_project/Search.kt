@@ -1,5 +1,6 @@
 package com.example.ar_final_project
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -34,7 +35,9 @@ class Search : Fragment() {
         // Set up your RecyclerView adapter and layout manager
         productAdapter = ProductAdapter(productList) { selectedProduct ->
             // Handle the item click here in the search method
-            Toast.makeText(requireContext(), "Clicked on ${selectedProduct.id}", Toast.LENGTH_SHORT).show()
+            val intent = Intent(activity, ProductDetail::class.java)
+            intent.putExtra("product",selectedProduct.id)
+            startActivity(intent)
             // You can also launch your AR fragment or perform any other action
         }
         recyclerView.adapter = productAdapter

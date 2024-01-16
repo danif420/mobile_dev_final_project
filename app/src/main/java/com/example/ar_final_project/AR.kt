@@ -2,6 +2,7 @@ package com.example.ar_final_project
 
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -20,10 +21,13 @@ class AR : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ar)
+        println("before check")
         if (checkARCoreAvailability()) {
+            println("all good trying to download model")
             lifecycleScope.launch {
                 loadAndRenderModel(downloadModel(intent.getIntExtra("productId", -1)))
             }
+            //loadAndRenderModel("file:///android_asset/cake.glb")
         } else {
             // ARCore is not available on this device, handle accordingly
             // You can display a message or fallback to a non-AR experience
@@ -38,6 +42,7 @@ class AR : AppCompatActivity() {
     private suspend fun downloadModel(productId: Int): String {
         val retrofitService = ModelRetrofitService.ModelRetrofitServiceFactory.makeRetrofitService()
         val response = retrofitService.downloadModel(productId.toString())
+        println(response.modeluri)
         return response.modeluri
     }
     private fun loadAndRenderModel(modelUri: String) {
@@ -69,9 +74,7 @@ class AR : AppCompatActivity() {
 
     private fun loadModel(modelRenderable: ModelRenderable) {
         val arFragment = supportFragmentManager.findFragmentById(R.id.arFragment) as ArFragment
-
         arFragment.setOnTapArPlaneListener { hitResult: HitResult, _, _ ->
-            // Handle the tap on a plane (surface)
 
             // Create an anchor at the hit location
             val anchor = hitResult.createAnchor()
@@ -83,8 +86,6 @@ class AR : AppCompatActivity() {
 
             node.renderable = modelRenderable
             node.localPosition = Vector3(0.0f, 0.0f, 0.0f)
-
-            //arFragment.arSceneView.scene.addChild(node)
         }
 
 
