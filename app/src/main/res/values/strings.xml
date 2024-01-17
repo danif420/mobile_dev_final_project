@@ -20,8 +20,11 @@
     <string name="name">Name</string>
     <string name="password">Password</string>
     <string name="confirmpassword">Confirm password</string>
-    <string name="signup">Create account</string>
+    <string name="signup">Sign up</string>
+    <string name="emtyfields">Empty fields!</string>
+    <string name="badpassword">Passwords doesn\'t match</string>
     <string name="search">Search</string>
+    <string name="usercreated">User created!</string>
     <string name="upload">Upload</string>
     <string name="account">Account</string>
     <string name="price">Price</string>
@@ -33,5 +36,9 @@
     <string name="upload_mod">Upload 3d model</string>
     <string name="buy">Buy</string>
     <string name="watch_in_nar">Watch in\nAR</string>
+    <string name="welcome">Welcome</string>
+    <string name="logout">Log Out</string>
+    <string name="delete">Delete\nuser</string>
+    <string name="myprodts">My products</string>
 
 </resources>

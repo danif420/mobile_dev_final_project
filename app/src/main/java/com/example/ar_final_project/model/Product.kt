@@ -7,11 +7,13 @@ data class Product(
     val name:String,
     val price:String,
     val quantity:Int,
-    val img:String)
+    val img:String,
+    val user:Int)
 
 data class UploadProduct(
     val name:String,
     val price:String,
     val quantity:Int,
     val img:Uri?,
-    val model_3d:Uri?)
+    val model_3d:Uri?,
+    val user:String,)

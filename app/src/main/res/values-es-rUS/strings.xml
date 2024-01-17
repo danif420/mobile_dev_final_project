@@ -11,7 +11,10 @@
     <string name="item3">Objeto 3</string>
     <string name="about1">Hecho por</string>
     <string name="about4">Desarrollo móvil</string>
-    <string name="signup">Crear cuenta</string>
+    <string name="signup">Registrarse</string>
+    <string name="emtyfields">Hay campos vacios!</string>
+    <string name="badpassword">Las contraseñas no coinciden</string>
+    <string name="usercreated">Usuario creado!</string>
     <string name="password">Contraseña</string>
     <string name="name">Nombre</string>
     <string name="forgot">Olvidé mi contraseña</string>
@@ -28,4 +31,8 @@
     <string name="upload_mod">Seleccionar modelo 3d</string>
     <string name="buy">Comprar</string>
     <string name="watch_in_nar">Ver en\nAR</string>
+    <string name="welcome">Bienvenido</string>
+    <string name="logout">Cerrar sesion</string>
+    <string name="delete">Eliminar usuario</string>
+    <string name="myprodts">My products</string>
 </resources>

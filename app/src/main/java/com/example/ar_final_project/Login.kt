@@ -29,16 +29,18 @@ class Login : AppCompatActivity() {
                         val response = service.login(name, pass)
                             // Successful login (HTTP 2xx)
                         response?.let {
-                            if (response.str == "success") {
-                                // Navigate to the next activity upon successful login
+                            if (response.token != null) {
                                 val intent = Intent(this@Login, MainActivity::class.java)
+                                intent.putExtra("username",name)
+                                intent.putExtra("token",response.token)
                                 startActivity(intent)
                                 finish()
                             } else {
                                 // Handle other cases based on the response content
+                                val errorMessage = response.nonFieldErrors?.joinToString("\n") ?: "Error"
                                 Toast.makeText(
                                     this@Login,
-                                    "Login failed: ${response.str}",
+                                    errorMessage,
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
@@ -47,7 +49,7 @@ class Login : AppCompatActivity() {
                         // Handle network or other exceptions
                         Toast.makeText(
                             this@Login,
-                            "Login failed: ${e.message}",
+                            "Error: ${e.message}",
                             Toast.LENGTH_SHORT
                         ).show()
                     }

@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import com.example.ar_final_project.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
@@ -20,8 +19,6 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigationView.setOnNavigationItemSelectedListener(bottomNavListener)
         replaceFragment(Home())
-
-
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         Log.d("TAG", "onCreateOptionsMenu called")
@@ -43,7 +40,12 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.page_account -> {
-                replaceFragment(Account())
+                val bundle = Bundle()
+                bundle.putString("username", intent.getStringExtra("username"))
+                bundle.putString("token", intent.getStringExtra("token"))
+                val accountFragment = Account()
+                accountFragment.arguments = bundle
+                replaceFragment(accountFragment)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.page_about -> {

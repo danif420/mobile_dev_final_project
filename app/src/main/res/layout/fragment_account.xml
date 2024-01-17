@@ -3,11 +3,76 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray"
     tools:context=".Account">
-
-    <TextView
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/account" />
-
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="16sp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/welcome"
+                android:textSize="28dp"
+                android:layout_marginBottom="32dp"
+                android:textColor="@color/light_green"
+                android:layout_marginRight="8sp"/>
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="_"
+                android:textSize="28dp"
+                android:layout_marginBottom="32dp"
+                android:textColor="@color/light_green"
+                android:textStyle="bold"/>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:orientation="vertical">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/logout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/logout"
+                    android:textColor="@color/gray"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="16sp"
+                    android:background="@drawable/rounded_corners_button" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/delete"
+                    android:textStyle="bold"
+                    android:textColor="@color/gray"
+                    android:textSize="12sp"
+                    android:background="@drawable/rounded_corners_button" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/myprodts"
+            android:textSize="28dp"
+            android:layout_marginBottom="32dp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_marginRight="8sp"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            tools:listitem="@layout/product"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </FrameLayout>
