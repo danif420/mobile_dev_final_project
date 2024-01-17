@@ -46,11 +46,10 @@ class Account : Fragment() {
             try {
                 val response = service.myProducts(getUserId(username).id.toString())
                 productList.addAll(response.products)
-                println(productList.toString())
                 recyclerView = view.findViewById(R.id.recyclerView)
                 productAdapter = ProductAdapter(productList) { selectedProduct ->
                     // Handle the item click here in the search method
-                    val intent = Intent(activity, ProductDetail::class.java)
+                    val intent = Intent(activity, MyProductDetail::class.java)
                     intent.putExtra("product",selectedProduct.id)
                     startActivity(intent)
                 }

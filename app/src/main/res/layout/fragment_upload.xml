@@ -15,8 +15,8 @@
         android:layout_height="wrap_content"
         android:text="@string/uploadp"
         android:textSize="28dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="16sp"
+        android:layout_marginBottom="16sp"
         android:textColor="@color/light_green"
         android:textStyle="bold"/>
 

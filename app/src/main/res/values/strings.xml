@@ -40,5 +40,12 @@
     <string name="logout">Log Out</string>
     <string name="delete">Delete\nuser</string>
     <string name="myprodts">My products</string>
+    <string name="products">Products</string>
+    <string name="detailprice">"price: "</string>
+    <string name="detailquantity">"quantity: "</string>
+    <string name="uploaded_by">"Uploaded by: "</string>
+    <string name="edit">Edit</string>
+    <string name="detailname">"name: "</string>
+    <string name="sold_out">Sold out</string>
 
 </resources>

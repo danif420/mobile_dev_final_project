@@ -40,6 +40,7 @@ class Upload : Fragment() {
     private var img: Uri? = null
     private var model: Uri? = null
     val STORAGE_PERMISSION_CODE = 100
+    var username:String?=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -49,6 +50,7 @@ class Upload : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_upload, container, false)
+
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -63,6 +65,7 @@ class Upload : Fragment() {
         val name = view.findViewById<EditText>(R.id.name)
         val price = view.findViewById<EditText>(R.id.price)
         val quant = view.findViewById<EditText>(R.id.quant)
+        val username =  arguments?.getString("username")
         imgb?.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             intent.type = "*/*"
@@ -88,8 +91,10 @@ class Upload : Fragment() {
                     val response = service.createProduct(
                         name.text.toString().toRequestBody("text/plain".toMediaTypeOrNull()),
                         price.text.toString().toRequestBody("text/plain".toMediaTypeOrNull()),
+                        quant.text.toString().toRequestBody("text/plain".toMediaTypeOrNull()),
                         imgPart,
-                        modelPart
+                        modelPart,
+                        getUserId(username).id.toString().toRequestBody("text/plain".toMediaTypeOrNull()),
                     )
                     if (response.isSuccessful) {
                         val intent = Intent(activity, MainActivity::class.java)
@@ -140,7 +145,10 @@ class Upload : Fragment() {
 
         return tempFile
     }
-
+    private suspend fun getUserId(username:String?): ResponseId {
+        val service = ProductRetrofitService.ProductRetrofitServiceFactory.makeRetrofitService()
+        return service.userId(username)
+    }
     @SuppressLint("Range")
     private fun getFileName(context: Context, uri: Uri): String? {
         var result: String? = null

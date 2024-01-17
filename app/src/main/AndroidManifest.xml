@@ -48,6 +48,12 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
+            android:name=".EditProduct"
+            android:exported="false" />
+        <activity
+            android:name=".MyProductDetail"
+            android:exported="false" />
+        <activity
             android:name=".SplashScreen"
             android:exported="true">
             <intent-filter>

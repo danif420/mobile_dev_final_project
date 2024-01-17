@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gray"
-    tools:context=".ProductDetail">
+    tools:context=".MyProductDetail">
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
+        android:layout_marginBottom="16sp"
         android:orientation="vertical">
         <androidx.cardview.widget.CardView
             android:layout_margin="16sp"
@@ -59,7 +60,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
-            android:layout_marginBottom="16sp">
+            android:layout_marginBottom="32sp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -74,45 +75,13 @@
                 android:textSize="16sp"
                 android:textColor="@color/white"
                 android:textStyle="bold"/>
-            <TextView
-                android:id="@+id/soldout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:text="@string/sold_out"
-                android:textSize="16sp"
-                android:layout_marginLeft="8sp"
-                android:textColor="@color/red"
-                android:textStyle="bold"/>
         </androidx.appcompat.widget.LinearLayoutCompat>
+
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginBottom="32sp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/uploaded_by"
-                android:textSize="16sp"
-                android:textColor="@color/white" />
-            <TextView
-                android:id="@+id/user"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="_"
-                android:textSize="16sp"
-                android:textColor="@color/white"
-                android:textStyle="bold"/>
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="16sp"
             android:gravity="center">
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bar"
@@ -125,10 +94,10 @@
                 android:textStyle="bold"
                 android:padding="8sp"/>
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/bbuy"
+                android:id="@+id/bedit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/buy"
+                android:text="@string/edit"
                 android:textColor="@color/gray"
                 android:textStyle="bold"
                 android:background="@drawable/rounded_corners_button" />

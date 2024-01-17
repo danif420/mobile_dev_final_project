@@ -27,6 +27,7 @@ import retrofit2.http.Query
 data class LoginResponse(val token: String? = null, val nonFieldErrors: List<String>? = null)
 data class SignUpResponse(val id: Int, val username: String)
 data class UriFromApi(val modeluri: String)
+data class ResponseGetUser(val username: String)
 data class ResponseId(val id: Int)
 interface RetrofitService {
     @FormUrlEncoded
@@ -59,8 +60,18 @@ interface UploadRetrofitService {
     suspend fun createProduct(
         @Part("name") name: RequestBody,
         @Part("price") price: RequestBody,
+        @Part("quantity") quantity: RequestBody,
         @Part img: MultipartBody.Part?,
-        @Part model: MultipartBody.Part?): Response<UploadProduct>
+        @Part model: MultipartBody.Part?,
+        @Part("user") user: RequestBody): Response<UploadProduct>
+    @PUT("api/products/{product}/edit/")
+    @Multipart
+    suspend fun editProduct(
+        @Path("product") product: String,
+        @Part("name") name: RequestBody,
+        @Part("price") price: RequestBody,
+        @Part("quantity") quantity: RequestBody): Response<UploadProduct>
+
     companion object Factory {
         private val loggingInterceptor = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY  // Log body of requests and responses
@@ -83,6 +94,8 @@ interface UploadRetrofitService {
 interface ProductRetrofitService {
     @GET("get_user_id/{user}/")
     suspend fun userId(@Path("user") userId: String?): ResponseId
+    @GET("get_user/{user}/")
+    suspend fun getUser(@Path("user") userId: Int): ResponseGetUser
     @GET("api/products/")
     suspend fun searchItems(@Query("search") query: String): RemoteResult
     @GET("api/user_products/")
@@ -93,6 +106,8 @@ interface ProductRetrofitService {
     suspend fun getProduct(@Path("productId") productId: String): Product
     @PUT("api/buy/{productId}/")
     suspend fun buyProduct(@Path("productId") productId: String): Product
+    @DELETE("api/products/{product}/delete/")
+    suspend fun deleteProduct(@Path("product") product: String): Response<Void>
     object ProductRetrofitServiceFactory {
         fun makeRetrofitService(): ProductRetrofitService {
             return Retrofit.Builder()
