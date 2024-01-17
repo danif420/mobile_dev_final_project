@@ -30,7 +30,7 @@ class CreateUser : AppCompatActivity() {
                             service.signup(uname, pass)
                             Toast.makeText(
                                 this@CreateUser,
-                                "@string/usercreated",
+                                getString(R.string.usercreated),
                                 Toast.LENGTH_SHORT
                             ).show()
                             val intent = Intent(this@CreateUser, Login::class.java)
@@ -48,14 +48,14 @@ class CreateUser : AppCompatActivity() {
                 } else {
                     Toast.makeText(
                         this,
-                        "@string/badpassword",
+                        getString(R.string.badpassword),
                         Toast.LENGTH_SHORT
                     ).show()
                 }
             } else {
                 Toast.makeText(
                     this,
-                    "@string/emptyfields",
+                    getString(R.string.emtyfields),
                     Toast.LENGTH_SHORT
                 ).show()
             }
